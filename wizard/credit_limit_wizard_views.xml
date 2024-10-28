@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="view_customer_credit_limit_form" model="ir.ui.view">
+            <field name="name">customer.credit.limit.form</field>
+            <field name="model">credit.limit.wizard</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <group name="credit_details">
+                                <field name="customer_id"/>
+                                <field name="credit_limit"/>
+                                <field name="is_on_hold"/>
+                            </group>
+                            <group name="amt_credit_details">
+                                <field name="total_receivable"/>
+                                <field name="sale_orders"/>
+                                <field name="invoices"/>
+                                <field name="current_quotation"/>
+                                <field name="exceeded_amt"/>
+                            </group>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button string="Confirm" name="action_snd_request" type="object" class="btn-primary"/>
+                        <button string="Cancel" class="btn-secondary" special="cancel" data-hotkey="x"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

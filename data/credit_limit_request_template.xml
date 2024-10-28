@@ -1,0 +1,30 @@
+<odoo>
+    <data>
+        <record id="email_template_credit_limit_request" model="mail.template">
+            <field name="name">Sale: Credit Limit Approval</field>
+            <field name="model_id" ref="customer_credit_limit.model_credit_limit_wizard"/>
+            <field name="subject">{{ object.order_id.name }} - Required to Credit Limit Approval</field>
+            <field name="email_from">{{ object.user.login }}</field>
+            <field name="email_to">{{ object.manager_id.login }}</field>
+            <field name="description">{{ object.order_id.name }} - Required to Credit Limit Approval</field>
+            <field name="body_html" type="html">
+                <div style="margin: 0px; padding: 0px;">
+                    <p style="margin: 0px; padding: 0px; font-size: 13px;">
+                        Dear <t t-out="object.manager_id.name or ''">Brandon Freeman</t>
+                        <br/><br/>
+                        A Sale Order <t t-out="object.order_id.name or ''"> REF_XXX</t> for customer <t t-out="object.customer_id.name or ''">REF_XXX</t> Required your Credit Limit Approval
+                        <br/><br/>
+                        You can access sale order from below url
+                        <br/>
+                        <a t-att-href="'/web#id=%s&amp;model=sale.order&amp;view_type=form' % object.order_id.id" target="_blank"
+                           style="text-decoration: none;">
+                            <span style="color: #878d97;">Link</span>
+                        </a>
+                        Best regards,
+                        <t t-out="object.user.name or ''">--<br/>Mitchell Admin</t>
+                    </p>
+                </div>
+            </field>
+        </record>
+    </data>
+</odoo>
